@@ -1,0 +1,12 @@
+﻿@code {
+    [Parameter]
+    public string WrapperStyle { get; set; } = string.Empty;
+
+    [Parameter]
+    public string IconWidth { get; set; } = DefaultParameter;
+
+    [Parameter]
+    public string IconHeight { get; set; } = DefaultParameter;
+
+    private const string DefaultParameter = "30px";
+}

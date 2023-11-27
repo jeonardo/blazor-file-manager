@@ -1,0 +1,5 @@
+﻿.data-element-row {
+    display: inline-flex;
+    gap: 15px;
+    width: 100%;
+}

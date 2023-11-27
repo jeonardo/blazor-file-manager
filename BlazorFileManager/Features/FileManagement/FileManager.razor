@@ -1,0 +1,26 @@
+﻿@if(FileManagerState is not null)
+{
+    <CascadingValue Value="FileManagerState">
+
+        <FileManagerToolbar />
+
+        <FileManagerRouter />
+
+        <RadzenSplitter Orientation="Orientation.Vertical">
+            <RadzenSplitterPane Size="450px">
+                <RadzenSplitter>
+                    <RadzenSplitterPane Size="50%" Min="30px" Max="70%">
+                        <div class="splitter-spacing-overflow">
+                            <DirectoryViewer />
+                        </div>
+                    </RadzenSplitterPane>
+                    <RadzenSplitterPane>
+                        <div class="splitter-spacing-overflow">
+                            <DataElementPreviewer />
+                        </div>
+                    </RadzenSplitterPane>
+                </RadzenSplitter>
+            </RadzenSplitterPane>
+        </RadzenSplitter>
+    </CascadingValue>
+}

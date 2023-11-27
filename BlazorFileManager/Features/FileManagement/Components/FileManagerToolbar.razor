@@ -1,0 +1,16 @@
+﻿<ConfirmDeleteModal @ref="DeleteConfirmation"
+                    TargetAction="ConfirmDeleteAction"
+                    ConfirmationTitle="Предупреждение об удалении"
+                    ConfirmationMessage=@($"Вы уверены что хотете удалить {FileManagerState.ActiveElement!.Path}{(FileManagerState.ActiveElement!.Type == DataElementType.FOLDER ? " и все вложенные элементы" : string.Empty)}?") />
+
+<CreateFolderModal @ref="CreateFolderModal"
+                   TargetAction="ConfirmCreateAction"
+                   ConfirmationTitle="Форма создания"
+                   ConfirmationMessage=@($"Введите имя папки") />
+
+<div class="rz-p-3 noselect">
+    <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+        <RadzenButton Click=@CreateFolderModal!.Show Text="Создать папку" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Primary" />
+        <RadzenButton Click=@DeleteConfirmation!.Show Text="Удалить элемент" Disabled=@(!FileManagerState.ActiveElement.Type.Equals(DataElementType.FILE) && !FileManagerState.ActiveElement.Type.Equals(DataElementType.FOLDER)) ButtonStyle="ButtonStyle.Danger" />
+    </RadzenStack>
+</div>

@@ -1,0 +1,15 @@
+﻿@if (Visible)
+{
+    @switch (FileFormatType)
+    {
+        case FileFormatType.TEXT:
+            <span class="preview-window-text">
+                @(System.Text.Encoding.UTF8.GetString(FileContent))
+            </span>
+            break;
+
+        case FileFormatType.IMAGE:
+            <img class="preview-window-img" src=@($"data:image/png;base64,{Convert.ToBase64String(FileContent)}") />
+            break;
+    }
+}

@@ -1,0 +1,7 @@
+﻿.breadcrumb {
+    padding: 2px 15px !important;
+}
+
+ol.breadcrumb {
+    margin: auto;
+}

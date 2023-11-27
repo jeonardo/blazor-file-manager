@@ -1,0 +1,26 @@
+﻿<table class="table table-hover noselect">
+    <tbody>
+        @if (FileManagerState.CurrentDirectory != FileManagerState.RootDirectory)
+        {
+            <DataElement Element=ReturnElement />
+        }
+
+        @if (!FileManagerState.CurrentDirectoryContent.Files.Any()
+        && !FileManagerState.CurrentDirectoryContent.Folders.Any())
+        {
+            <p>Данная папка пуста.</p>
+        }
+        else
+        {
+            @foreach (var folder in FileManagerState.CurrentDirectoryContent.Folders)
+            {
+                <DataElement Element="new(DataElementType.FOLDER, folder)" />
+            }
+
+            @foreach (var file in FileManagerState.CurrentDirectoryContent.Files)
+            {
+                <DataElement Element="new(DataElementType.FILE, file)" />
+            }
+        }
+    </tbody>
+</table>

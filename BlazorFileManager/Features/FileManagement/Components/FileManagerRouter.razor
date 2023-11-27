@@ -1,0 +1,25 @@
+﻿<nav class="row rz-m-auto rz-py-1">
+    <ol class="breadcrumb rz-border-base-500 noselect">
+        @{
+            var paths = FileManagerState.CurrentDirectory.Split('\\');
+            for (int i = 0; i < paths.Count(); i++)
+            {
+                var local_i = i;
+                var fullPath = string.Join("\\", paths.Take(local_i + 1));
+
+                @if (FileManagerState.CurrentDirectory == fullPath)
+                {
+                    <li class="breadcrumb-item active">
+                        @paths[local_i]
+                    </li>
+                }
+                else
+                {
+                    <li class="breadcrumb-item">
+                        <a href="#" @onclick="(() => FileManagerState.NavigateDirectory(fullPath))">@paths[local_i]</a>
+                    </li>
+                }
+            }
+        }
+    </ol>
+</nav>

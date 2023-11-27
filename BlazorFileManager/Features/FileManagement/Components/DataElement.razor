@@ -1,0 +1,17 @@
+﻿<tr class="is-clickable @(Active ? "rz-background-color-base-200" : "")" @onclick="HandleClick" @ondblclick="HandleDoubleClick">
+    <td class="data-element-row">
+        @switch (Element.Type)
+        {
+            case DataElementType.FOLDER:
+                <FolderIcon />
+                break;
+            case DataElementType.FILE:
+                <FileIcon />
+                break;
+            case DataElementType.RETURN:
+                <ReturnIcon />
+                break;
+        }
+        <span>@ElementName</span>
+    </td>
+</tr>

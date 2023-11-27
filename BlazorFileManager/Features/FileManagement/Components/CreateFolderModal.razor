@@ -1,0 +1,36 @@
+﻿@inherits ModalBase<string>
+
+@if (Visible)
+{
+    <div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <RadzenTemplateForm TItem=@NewFolderModel Data=@Model Submit=@OnSubmit>
+                <div class="modal-content">
+                    
+                    @if (!string.IsNullOrEmpty(ConfirmationTitle))
+                    {
+                        <div class="modal-header noselect">
+                            <h5 class="modal-title" id="exampleModalLabel">@ConfirmationTitle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    @onclick="Hide">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
+
+                    <div class="row m-3">
+                        <div class="col">
+                            <RadzenTextBox style="display: block" Name="Name" @bind-Value=@Model.Name class="w-100" Placeholder=@ConfirmationMessage />
+                            <RadzenCustomValidator class="noselect" Component="Name" Validator="@(() => Model.ValidateName())" Text="Введено некорректное имя либо папка с этим именем уже существует!" />
+                        </div>
+                    </div>
+
+                    <div class="modal-footer noselect">
+                        <RadzenButton ButtonStyle=ButtonStyle.Dark Click="Hide" ButtonType="ButtonType.Button" Text="Отменить"></RadzenButton>
+                        <RadzenButton ButtonStyle=ButtonStyle.Success ButtonType="ButtonType.Submit" Text="Создать"></RadzenButton>
+                    </div>
+                </div>
+            </RadzenTemplateForm>
+        </div>
+    </div>
+}
