@@ -1,1 +1,1 @@
-# file-manager
+# blazor-file-manager
